@@ -1817,8 +1817,6 @@ function App() {
         setSearchInput(search_data);
         if (search_data && searchData.length > 0) {
             const searchedData = searchData.filter(item => {
-                console.log(search_data);
-                console.log(item.unique_name);
                 if (item.unique_name.toLowerCase().includes(search_data.toLowerCase())) {
                     return item
                 }
