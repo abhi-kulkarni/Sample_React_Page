@@ -906,96 +906,96 @@ function App() {
 
                 </div>
             </div>
-            {/*<div className="row" style={{padding: '0px', margin: '0px 0px 0px 0px', borderTop: '1px solid #d3d3d3'}}>*/}
-            {/*    <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">*/}
-            {/*        <div className="row pull-left" style={{margin: '10px 0px 0px 0px', padding: '0px 0px 0px 30px'}}>*/}
-            {/*            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12"*/}
-            {/*                 style={{margin: '10px 0px 15px 0px', padding: '0px'}}>*/}
-            {/*                <FontAwesomeIcon style={{margin: '0px 30px 10px 0px', cursor: 'pointer'}} color="#9B9B9B"*/}
-            {/*                                 size="1x" icon={faStepBackward}/>*/}
-            {/*                {playing ? <FontAwesomeIcon onClick={toggleAudio}*/}
-            {/*                                            style={{margin: '0px 0px 0px 0px', cursor: 'pointer'}}*/}
-            {/*                                            color="#00A1FF" size="3x" icon={faPauseCircle}/> :*/}
-            {/*                    <FontAwesomeIcon onClick={toggleAudio}*/}
-            {/*                                     style={{margin: '0px 0px 0px 0px', cursor: 'pointer'}} color="#00A1FF"*/}
-            {/*                                     size="3x" icon={faPlayCircle}/>}*/}
-            {/*                <FontAwesomeIcon style={{margin: '0px 0px 10px 30px', cursor: 'pointer'}} color="#9B9B9B"*/}
-            {/*                                 size="1x" icon={faStepForward}/>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*    <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">*/}
-            {/*        <div className="row" style={{margin: '10px 0px 0px 0px', padding: '0px'}}>*/}
-            {/*            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">*/}
-            {/*                <audio*/}
-            {/*                    onTimeUpdate={(e) => setCurrentTime(e.target.currentTime)}*/}
-            {/*                    onCanPlay={(e) => setDur(e.target.duration)}*/}
-            {/*                    onEnded={handleEnd}*/}
-            {/*                    ref={audio}*/}
-            {/*                    preload='true'*/}
-            {/*                    src={currSong}/>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*        <div style={{margin: '20px 0px 0px 0px', padding: '0px'}} className="progress_bar_container row">*/}
-            {/*            <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2 current_time">*/}
-            {/*                <span className="current_time pull-right">{fmtMSS(currentTime)}</span>*/}
-            {/*            </div>*/}
-            {/*            <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8 song_player">*/}
-            {/*                <input*/}
-            {/*                    onDurationChange={e => changeColorBar(e)}*/}
-            {/*                    style={{marginTop: '8px', cursor: 'pointer'}}*/}
-            {/*                    className="slider"*/}
-            {/*                    onChange={handleProgress}*/}
-            {/*                    value={dur ? (currentTime * 100) / dur : 0}*/}
-            {/*                    type="range" name="progressBar" id="progressBar"/>*/}
-            {/*            </div>*/}
-            {/*            <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">*/}
-            {/*                <span className="total_time pull-left">{fmtMSS(dur)}</span>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*    <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">*/}
-            {/*        <div className="row pull-right" style={{margin: '0px 0px 0px 0px', padding: '15px 0px 0px 0px'}}>*/}
-            {/*            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12"*/}
-            {/*                 style={{margin: '15px 0px 15px 0px', padding: '0px'}}>*/}
-            {/*                <FontAwesomeIcon style={{margin: '0px 30px 0px 0px', cursor: 'pointer'}} color="#9B9B9B"*/}
-            {/*                                 size="1x" icon={faRandom}/>*/}
-            {/*                <FontAwesomeIcon style={{margin: '0px 0px 0px 0px', cursor: 'pointer'}} color="#9B9B9B"*/}
-            {/*                                 size="1x" icon={faRetweet}/>*/}
-            {/*                <input ref={volumeBar} className="volumeSlider" orient="vertical" style={{*/}
-            {/*                    display: showVolumeBar ? 'block' : 'none',*/}
-            {/*                    position: 'absolute',*/}
-            {/*                    bottom: '20px',*/}
-            {/*                    right: '7px'*/}
-            {/*                }} value={Math.round(volume * 100)} type="range" name="volumeBar" id="volumeBar"*/}
-            {/*                       onChange={(e) => handleVolume(e.target.value / 100)}/>*/}
-            {/*                <FontAwesomeIcon onClick={() => setShowVolumeBar(true)} style={{*/}
-            {/*                    margin: '0px 0px 0px 30px',*/}
-            {/*                    cursor: 'pointer',*/}
-            {/*                    position: 'relative'*/}
-            {/*                }} color="#9B9B9B" size="1x" icon={faVolumeUp}/>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*    <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">*/}
-            {/*        <div className="row" style={{margin: '0px 0px 0px 0px', padding: '15px 0px 10px 0px'}}>*/}
-            {/*            <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8"*/}
-            {/*                 style={{margin: '2px 0px 15px 0px', padding: '0px 0px 0px 50px'}}>*/}
-            {/*                <img alt="queue_artist_image" src={queue_artist} width="40vw"*/}
-            {/*                     style={{borderRadius: '8px'}}/>*/}
-            {/*            </div>*/}
-            {/*            <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4"*/}
-            {/*                 style={{margin: '10px 0px 0px 0px', padding: '0px 5px 0px 0px'}}>*/}
-            {/*                <span className="pull-left" style={{*/}
-            {/*                    fontSize: '15px',*/}
-            {/*                    fontFamily: 'sans-serif',*/}
-            {/*                    fontWeight: 'bold',*/}
-            {/*                    color: '#9B9B9B'*/}
-            {/*                }}>Queue</span>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
+            <div className="row" style={{padding: '0px', margin: '0px 0px 0px 0px', borderTop: '1px solid #d3d3d3'}}>
+                <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <div className="row pull-left" style={{margin: '10px 0px 0px 0px', padding: '0px 0px 0px 30px'}}>
+                        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12"
+                             style={{margin: '10px 0px 15px 0px', padding: '0px'}}>
+                            <FontAwesomeIcon style={{margin: '0px 30px 10px 0px', cursor: 'pointer'}} color="#9B9B9B"
+                                             size="1x" icon={faStepBackward}/>
+                            {playing ? <FontAwesomeIcon onClick={toggleAudio}
+                                                        style={{margin: '0px 0px 0px 0px', cursor: 'pointer'}}
+                                                        color="#00A1FF" size="3x" icon={faPauseCircle}/> :
+                                <FontAwesomeIcon onClick={toggleAudio}
+                                                 style={{margin: '0px 0px 0px 0px', cursor: 'pointer'}} color="#00A1FF"
+                                                 size="3x" icon={faPlayCircle}/>}
+                            <FontAwesomeIcon style={{margin: '0px 0px 10px 30px', cursor: 'pointer'}} color="#9B9B9B"
+                                             size="1x" icon={faStepForward}/>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <div className="row" style={{margin: '10px 0px 0px 0px', padding: '0px'}}>
+                        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <audio
+                                onTimeUpdate={(e) => setCurrentTime(e.target.currentTime)}
+                                onCanPlay={(e) => setDur(e.target.duration)}
+                                onEnded={handleEnd}
+                                ref={audio}
+                                preload='true'
+                                src={currSong}/>
+                        </div>
+                    </div>
+                    <div style={{margin: '20px 0px 0px 0px', padding: '0px'}} className="progress_bar_container row">
+                        <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2 current_time">
+                            <span className="current_time pull-right">{fmtMSS(currentTime)}</span>
+                        </div>
+                        <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8 song_player">
+                            <input
+                                onDurationChange={e => changeColorBar(e)}
+                                style={{marginTop: '8px', cursor: 'pointer'}}
+                                className="slider"
+                                onChange={handleProgress}
+                                value={dur ? (currentTime * 100) / dur : 0}
+                                type="range" name="progressBar" id="progressBar"/>
+                        </div>
+                        <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <span className="total_time pull-left">{fmtMSS(dur)}</span>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <div className="row pull-right" style={{margin: '0px 0px 0px 0px', padding: '15px 0px 0px 0px'}}>
+                        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12"
+                             style={{margin: '15px 0px 15px 0px', padding: '0px'}}>
+                            <FontAwesomeIcon style={{margin: '0px 30px 0px 0px', cursor: 'pointer'}} color="#9B9B9B"
+                                             size="1x" icon={faRandom}/>
+                            <FontAwesomeIcon style={{margin: '0px 0px 0px 0px', cursor: 'pointer'}} color="#9B9B9B"
+                                             size="1x" icon={faRetweet}/>
+                            <input ref={volumeBar} className="volumeSlider" orient="vertical" style={{
+                                display: showVolumeBar ? 'block' : 'none',
+                                position: 'absolute',
+                                bottom: '20px',
+                                right: '7px'
+                            }} value={Math.round(volume * 100)} type="range" name="volumeBar" id="volumeBar"
+                                   onChange={(e) => handleVolume(e.target.value / 100)}/>
+                            <FontAwesomeIcon onClick={() => setShowVolumeBar(true)} style={{
+                                margin: '0px 0px 0px 30px',
+                                cursor: 'pointer',
+                                position: 'relative'
+                            }} color="#9B9B9B" size="1x" icon={faVolumeUp}/>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <div className="row" style={{margin: '0px 0px 0px 0px', padding: '15px 0px 10px 0px'}}>
+                        <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8"
+                             style={{margin: '2px 0px 15px 0px', padding: '0px 0px 0px 50px'}}>
+                            <img alt="queue_artist_image" src={queue_artist} width="40vw"
+                                 style={{borderRadius: '8px'}}/>
+                        </div>
+                        <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4"
+                             style={{margin: '10px 0px 0px 0px', padding: '0px 5px 0px 0px'}}>
+                            <span className="pull-left" style={{
+                                fontSize: '15px',
+                                fontFamily: 'sans-serif',
+                                fontWeight: 'bold',
+                                color: '#9B9B9B'
+                            }}>Queue</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
