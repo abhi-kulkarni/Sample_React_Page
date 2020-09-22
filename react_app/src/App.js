@@ -2001,7 +2001,7 @@ function App() {
                                                     <span className="pull-left" style={{
                                                         fontSize: '18px',
                                                         fontWeight: 'normal',
-                                                        color: 'black',
+                                                        color: searchInput === item.unique_name?'#00A1FF':'black',
                                                         marginTop: '10px'
                                                     }}>{item.artist} - {item.title}</span>
                                                 </div>
