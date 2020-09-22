@@ -19,6 +19,7 @@ import {
     faPodcast,
     faSearch,
     faBell,
+    faTimesCircle,
     faStepBackward,
     faStepForward,
     faPlay,
@@ -163,19 +164,19 @@ function App() {
     };
 
     const nextSong = () => {
-        alert('Song')
+        console.log('Song')
     };
 
     const togglePlaying = () => {
-        alert('Playing')
+        console.log('Playing')
     };
 
     const toggleRandom = () => {
-        alert('TOGGLE')
+        console.log('TOGGLE')
     };
 
     const toggleRepeat = () => {
-        alert('Repeat')
+        console.log('Repeat')
     };
 
     const changeColorBar = (e) => {
@@ -196,7 +197,6 @@ function App() {
                 setIsClicked({...isClicked, 'home': false, 'music': false, 'podcast': false, 'video': true});
             }
         });
-        console.log(isClicked)
     };
 
     const handleProgress = (e) => {
@@ -207,7 +207,7 @@ function App() {
     };
 
     const handleEnd = () => {
-        alert('END');
+        console.log('END');
         setPlaying(false);
     };
 
@@ -259,6 +259,10 @@ function App() {
         if (!volumeBar.current.contains(e.target)) {
             setShowVolumeBar(false);
         }
+    };
+
+    const closeSuggestion = () => {
+      setSearchInput("");
     };
 
     const handleSearch = (e) => {
@@ -413,7 +417,7 @@ function App() {
                             <FontAwesomeIcon className="pull-left" style={{margin: '8px 0px 0px 10px'}} color="#9B9B9B"
                                              size="lg" icon={faSearch}/>
                         </div>
-                        <div style={{margin: '0px', padding: '0px'}} className="col-xs-6 col-sm-8 col-md-8 col-lg-8">
+                        <div style={{margin: '0px', padding: '0px'}} className="col-xs-5 col-sm-7 col-md-7 col-lg-7">
                             <input autoFocus
                                    onChange={e => handleSearch(e)}
                                    value={searchInput}
@@ -422,7 +426,8 @@ function App() {
                                        outline: 'none',
                                        boxShadow: 'none',
                                        caretColor: '#00A1FF',
-                                       postion: 'relative'
+                                       postion: 'relative',
+                                       padding:'0px 0px 0px 0px'
                                    }}
                                    type="text" className="form-control" aria-label="search"
                                    placeholder="Search artists, songs, videos..."
@@ -459,6 +464,11 @@ function App() {
                                         </div>)
                                     }) : ""}
                             </div>
+                        </div>
+                        <div style={{margin: '0px', padding: '0px 0px 0px 0px', cursor: 'pointer', display: searchInput.length > 0 ?'block':'none'}}
+                             className="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                            <FontAwesomeIcon onClick={closeSuggestion} className="pull-left" style={{margin: '8px 0px 0px 0px'}} color="#9B9B9B"
+                                             size="lg" icon={faTimesCircle}/>
                         </div>
                         <div style={{margin: '0px', padding: '8px 0px 0px 0px', cursor: 'pointer'}}
                              className="col-xs-3 col-sm-2 col-md-2 col-lg-2">
