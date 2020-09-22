@@ -72,6 +72,7 @@ import radio4 from './static/img/radio4.jpg'
 import trendvid1 from './static/img/trendingvideo1.jpg'
 import trendvid2 from './static/img/trendingvideo2.jpg'
 import trendvid3 from './static/img/trendingvideo3.jpg'
+
 function App() {
 
     const audio = useRef('audio_tag');
@@ -87,7 +88,7 @@ function App() {
     const [currentTime, setCurrentTime] = useState(0);
     const [searchData, setSearchData] = useState(0);
     const [data, setData] = useState(0);
-    const [isClicked, setIsClicked] = useState({'home':true, 'music': false, 'podcast': false, 'video': false});
+    const [isClicked, setIsClicked] = useState({'home': true, 'music': false, 'podcast': false, 'video': false});
     const [options, setOptions] = useState({
         margin: 30,
         autoplay: false,
@@ -109,7 +110,7 @@ function App() {
                 margin: 30,
             }
         }
-        });
+    });
     const [options2, setOptions2] = useState({
         margin: 30,
         autoplay: false,
@@ -132,7 +133,7 @@ function App() {
                 items: 4,
             }
         }
-        });
+    });
 
     const fmtMSS = (s) => {
         return (s - (s %= 60)) / 60 + (10 <= s ? ':' : ':0') + ~~(s)
@@ -185,13 +186,13 @@ function App() {
     const handleMenuClick = (e) => {
         e.preventDefault();
         Object.keys(isClicked).map(item => {
-            if(e.target.id === 'home'){
+            if (e.target.id === 'home') {
                 setIsClicked({...isClicked, 'home': true, 'music': false, 'podcast': false, 'video': false});
-            }else if(e.target.id === 'music'){
+            } else if (e.target.id === 'music') {
                 setIsClicked({...isClicked, 'home': false, 'music': true, 'podcast': false, 'video': false});
-            }else if(e.target.id === 'podcast'){
+            } else if (e.target.id === 'podcast') {
                 setIsClicked({...isClicked, 'home': false, 'music': false, 'podcast': true, 'video': false});
-            }else if(e.target.id === 'video'){
+            } else if (e.target.id === 'video') {
                 setIsClicked({...isClicked, 'home': false, 'music': false, 'podcast': false, 'video': true});
             }
         });
@@ -234,13 +235,13 @@ function App() {
             let podcast_track = res.data.data.PodcastTrack.data;
             let data = album.concat(artist).concat(track).concat(video).concat(podcast_show).concat(podcast_episode).concat(podcast_track);
             let required_data = data.map((item, index) => {
-                    let temp = {};
-                    temp['artist'] = item.Artist;
-                    temp['image'] = item.image.replace("<$size$>", "300");
-                    temp['title'] = item.title;
-                    temp['content_id'] = item.ContentID;
-                    temp['unique_name'] = item.Artist+item.title;
-                    return temp
+                let temp = {};
+                temp['artist'] = item.Artist;
+                temp['image'] = item.image.replace("<$size$>", "300");
+                temp['title'] = item.title;
+                temp['content_id'] = item.ContentID;
+                temp['unique_name'] = item.Artist + item.title;
+                return temp
             });
             let unique_data = required_data.filter((item, index, self) =>
                 index === self.findIndex((t) => (
@@ -279,7 +280,12 @@ function App() {
     return (
         <div className="App" style={{backgroundColor: '#f0f0f0'}}>
             <div className="row" style={{padding: '0px 0px 0px 0px', margin: '0px'}}>
-                <div style={{borderRight: '1px solid #f0f0f0', padding: '10px 0px 0px 20px', margin: '0px', backgroundColor: 'white'}}
+                <div style={{
+                    borderRight: '1px solid #f0f0f0',
+                    padding: '10px 0px 0px 20px',
+                    margin: '0px',
+                    backgroundColor: 'white'
+                }}
                      className="col-xs-3 col-sm-2 col-md-2 col-lg-2">
                     <div style={{padding: '0px', margin: '0px'}} className="row">
                         <div style={{padding: '10px 0px 10px 0px'}} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -290,37 +296,56 @@ function App() {
                     </div>
                     <div className="row" style={{marginTop: '10px', cursor: 'pointer'}}>
                         <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3" style={{padding: '3px 0px 0px 0px'}}>
-                            <FontAwesomeIcon color={isClicked['home']?'#00A1FF': '#9B9B9B'} size="lg" icon={faHome}/>
+                            <FontAwesomeIcon color={isClicked['home'] ? '#00A1FF' : '#9B9B9B'} size="lg" icon={faHome}/>
                         </div>
                         <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9" style={{paddingLeft: '0px'}}>
-                            <span id="home" onClick={e => handleMenuClick(e)} style={{fontSize: '20px', fontWeight: 'normal', color: isClicked['home']?'#00A1FF': '#9B9B9B'}}
+                            <span id="home" onClick={e => handleMenuClick(e)} style={{
+                                fontSize: '20px',
+                                fontWeight: 'normal',
+                                color: isClicked['home'] ? '#00A1FF' : '#9B9B9B'
+                            }}
                                   className="pull-left">Home</span>
                         </div>
                     </div>
                     <div className="row" style={{marginTop: '10px', cursor: 'pointer'}}>
                         <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3" style={{padding: '3px 0px 0px 0px'}}>
-                            <FontAwesomeIcon color={isClicked['music']?'#00A1FF': '#9B9B9B'} size="lg" icon={faMusic}/>
+                            <FontAwesomeIcon color={isClicked['music'] ? '#00A1FF' : '#9B9B9B'} size="lg"
+                                             icon={faMusic}/>
                         </div>
                         <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9" style={{paddingLeft: '0px'}}>
-                            <span id="music" onClick={e => handleMenuClick(e)} style={{fontSize: '20px', fontWeight: 'normal', color: isClicked['music']?'#00A1FF': '#9B9B9B'}}
+                            <span id="music" onClick={e => handleMenuClick(e)} style={{
+                                fontSize: '20px',
+                                fontWeight: 'normal',
+                                color: isClicked['music'] ? '#00A1FF' : '#9B9B9B'
+                            }}
                                   className="pull-left">My Music</span>
                         </div>
                     </div>
                     <div className="row" style={{marginTop: '10px', cursor: 'pointer'}}>
                         <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3" style={{padding: '3px 0px 0px 0px'}}>
-                            <FontAwesomeIcon color={isClicked['podcast']?'#00A1FF': '#9B9B9B'} size="lg" icon={faPodcast}/>
+                            <FontAwesomeIcon color={isClicked['podcast'] ? '#00A1FF' : '#9B9B9B'} size="lg"
+                                             icon={faPodcast}/>
                         </div>
                         <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9" style={{paddingLeft: '0px'}}>
-                            <span id="podcast" onClick={e => handleMenuClick(e)} style={{fontSize: '20px', fontWeight: 'normal', color: isClicked['podcast']?'#00A1FF': '#9B9B9B'}}
+                            <span id="podcast" onClick={e => handleMenuClick(e)} style={{
+                                fontSize: '20px',
+                                fontWeight: 'normal',
+                                color: isClicked['podcast'] ? '#00A1FF' : '#9B9B9B'
+                            }}
                                   className="pull-left">Podcast</span>
                         </div>
                     </div>
                     <div className="row" style={{marginTop: '10px', cursor: 'pointer'}}>
                         <div className="col-xs-4 col-sm-3 col-md-3 col-lg-3" style={{padding: '3px 0px 0px 0px'}}>
-                            <FontAwesomeIcon color={isClicked['video']?'#00A1FF': '#9B9B9B'} size="lg" icon={faPlayCircle}/>
+                            <FontAwesomeIcon color={isClicked['video'] ? '#00A1FF' : '#9B9B9B'} size="lg"
+                                             icon={faPlayCircle}/>
                         </div>
                         <div className="col-xs-8 col-sm-9 col-md-9 col-lg-9" style={{paddingLeft: '0px'}}>
-                            <span id="video" onClick={e => handleMenuClick(e)} style={{fontSize: '20px', fontWeight: 'normal', color: isClicked['video']?'#00A1FF': '#9B9B9B'}}
+                            <span id="video" onClick={e => handleMenuClick(e)} style={{
+                                fontSize: '20px',
+                                fontWeight: 'normal',
+                                color: isClicked['video'] ? '#00A1FF' : '#9B9B9B'
+                            }}
                                   className="pull-left">Video</span>
                         </div>
                     </div>
@@ -328,7 +353,7 @@ function App() {
                         padding: '0px',
                         margin: '25px 20px 0px 0px',
                         borderRadius: '10px',
-                        height:'auto',
+                        height: 'auto',
                         color: 'white'
                     }} className="row">
                         <div className="row" style={{margin: '10px 0px', padding: '0px'}}>
@@ -343,7 +368,8 @@ function App() {
                         </div>
                         <div className="row" style={{margin: '20px 0px 0px 0px', padding: '0px'}}>
                             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                <button style={{borderRadius: '10px', whiteSpace: 'normal', margin: '0px 0px 15px 0px'}} type="button"
+                                <button style={{borderRadius: '10px', whiteSpace: 'normal', margin: '0px 0px 15px 0px'}}
+                                        type="button"
                                         className="btn btn-outline-white btn-block"><span style={{
                                     color: 'white',
                                     textTransform: 'capitalize',
@@ -362,18 +388,25 @@ function App() {
                     </div>
                     <div className="row" style={{marginTop: '10px', cursor: 'pointer'}}>
                         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <img style={{paddingRight: '20px'}} className="img-responsive" alt="playstore" src={playStore}/>
+                            <img style={{paddingRight: '20px'}} className="img-responsive" alt="playstore"
+                                 src={playStore}/>
                         </div>
                     </div>
                     <div className="row" style={{padding: '10px 0px 50px 0px', cursor: 'pointer'}}>
                         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <img style={{paddingRight: '20px'}} className="img-responsive" alt="applestore" src={appleStore}/>
+                            <img style={{paddingRight: '20px'}} className="img-responsive" alt="applestore"
+                                 src={appleStore}/>
                         </div>
                     </div>
                     <br/><br/><br/><br/><br/><br/><br/><br/><br/>
                 </div>
                 <div style={{padding: '0px'}} className="col-xs-9 col-sm-10 col-md-10 col-lg-10">
-                    <div style={{padding: '20px 0px 10px 0px', margin: '0px', borderBottom: '1px solid white', backgroundColor: 'white'}}
+                    <div style={{
+                        padding: '20px 0px 10px 0px',
+                        margin: '0px',
+                        borderBottom: '1px solid white',
+                        backgroundColor: 'white'
+                    }}
                          className="row">
                         <div style={{margin: '0px', padding: '0px 0px 0px 20px', cursor: 'pointer'}}
                              className="col-xs-1 col-sm-1 col-md-1 col-lg-1">
@@ -384,25 +417,48 @@ function App() {
                             <input autoFocus
                                    onChange={e => handleSearch(e)}
                                    value={searchInput}
-                                   style={{border: 'none', outline: 'none', boxShadow: 'none', caretColor: '#00A1FF', postion: 'relative'}}
+                                   style={{
+                                       border: 'none',
+                                       outline: 'none',
+                                       boxShadow: 'none',
+                                       caretColor: '#00A1FF',
+                                       postion: 'relative'
+                                   }}
                                    type="text" className="form-control" aria-label="search"
                                    placeholder="Search artists, songs, videos..."
                                    aria-describedby="search"/>
-                                   <div style={{position: 'absolute', backgroundColor: 'white', width: '100%', top: '45px', left: '-25px', zIndex:' 10'}} className="row">
-                                       {data && data.length > 0 && searchInput.length > 0?
-                                           data.map((item, index) => {
-                                               return (<div key={index} style={{ padding: '10px 0px'}} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                               <div style={{margin: '0px', padding: '0px'}} className="row">
-                                                   <div style={{ padding: '5px 0px 0px 10px', margin: '0px'}} className="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-                                                       <img className="pull-right img-responsive" alt="album_img" src={item.image} style={{borderRadius: '6px', width: '40px'}}/>
-                                                   </div>
-                                                   <div style={{ padding: '0px 0px 0px 20px', margin: '0px'}} className="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                                                       <span className="pull-left" style={{fontSize: '18px', fontWeight: 'normal', color: 'black', marginTop: '10px'}}>{item.artist} - {item.title}</span>
-                                                   </div>
-                                               </div>
+                            <div style={{
+                                position: 'absolute',
+                                backgroundColor: 'white',
+                                width: '100%',
+                                top: '45px',
+                                left: '-25px',
+                                zIndex: ' 10'
+                            }} className="row">
+                                {data && data.length > 0 && searchInput.length > 0 ?
+                                    data.map((item, index) => {
+                                        return (<div key={index} style={{padding: '10px 0px'}}
+                                                     className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div style={{margin: '0px', padding: '0px'}} className="row">
+                                                <div style={{padding: '5px 0px 0px 10px', margin: '0px'}}
+                                                     className="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                                                    <img className="pull-right img-responsive" alt="album_img"
+                                                         src={item.image} style={{borderRadius: '6px', width: '40px'}}/>
+                                                </div>
+                                                <div style={{padding: '0px 0px 0px 20px', margin: '0px'}}
+                                                     className="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                    <span className="pull-left" style={{
+                                                        fontSize: '18px',
+                                                        fontWeight: 'normal',
+                                                        color: 'black',
+                                                        marginTop: '10px'
+                                                    }}>{item.artist} - {item.title}</span>
+                                                </div>
+                                            </div>
 
-                                               </div>) }) : ""}
-                                   </div>
+                                        </div>)
+                                    }) : ""}
+                            </div>
                         </div>
                         <div style={{margin: '0px', padding: '8px 0px 0px 0px', cursor: 'pointer'}}
                              className="col-xs-3 col-sm-2 col-md-2 col-lg-2">
@@ -415,9 +471,16 @@ function App() {
                                  src={profile_img}/>
                         </div>
                     </div>
-                    <div className="row" style={{padding: '0px', margin: '0px', backgroundColor: '#f0f0f0', width: '100%'}}>
-                        <div style={{ padding: '15px 0px 15px 10px'}} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <span className="pull-left" style={{fontWeight: 'normal', color:'black', fontFamily: 'sans-serif', fontSize: '35px'}}>Top Picks</span>
+                    <div className="row"
+                         style={{padding: '0px', margin: '0px', backgroundColor: '#f0f0f0', width: '100%'}}>
+                        <div style={{padding: '15px 0px 15px 10px'}}
+                             className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <span className="pull-left" style={{
+                                fontWeight: 'normal',
+                                color: 'black',
+                                fontFamily: 'sans-serif',
+                                fontSize: '35px'
+                            }}>Top Picks</span>
                         </div>
                         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <OwlCarousel
@@ -454,8 +517,13 @@ function App() {
                                 </div>
                             </OwlCarousel>
                         </div>
-                        <div style={{ margin: '50px 0px 20px 0px'}}  className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <span className="pull-left" style={{fontWeight: 'normal', color:'black', fontFamily: 'sans-serif', fontSize: '35px'}}>Artists</span>
+                        <div style={{margin: '50px 0px 20px 0px'}} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <span className="pull-left" style={{
+                                fontWeight: 'normal',
+                                color: 'black',
+                                fontFamily: 'sans-serif',
+                                fontSize: '35px'
+                            }}>Artists</span>
                         </div>
                         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <OwlCarousel
@@ -484,28 +552,57 @@ function App() {
                             >
                                 <div className="item">
                                     <img style={{borderRadius: '50%', width: '100%'}} alt="artists" src={artist1}/>
-                                    <h3 style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: 'black', paddingLeft: '20px'}}>Hridoy Khan</h3>
-                                    <h5 style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: '#9B9B9B'}}>0000 fans</h5>
+                                    <h3 style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: 'black',
+                                        paddingLeft: '20px'
+                                    }}>Hridoy Khan</h3>
+                                    <h5 style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: '#9B9B9B'}}>0000
+                                        fans</h5>
                                 </div>
                                 <div className="item">
                                     <img style={{borderRadius: '50%', width: '100%'}} alt="artists" src={artist2}/>
-                                    <h3 style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: 'black', paddingLeft: '20px'}}>Asif</h3>
-                                    <h5 style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: '#9B9B9B'}}>0000 fans</h5>
+                                    <h3 style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: 'black',
+                                        paddingLeft: '20px'
+                                    }}>Asif</h3>
+                                    <h5 style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: '#9B9B9B'}}>0000
+                                        fans</h5>
                                 </div>
                                 <div className="item">
                                     <img style={{borderRadius: '50%', width: '100%'}} alt="artists" src={artist3}/>
-                                    <h3 style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: 'black', paddingLeft: '20px'}}>Habib Wahid</h3>
-                                    <h5 style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: '#9B9B9B'}}>0000 fans</h5>
+                                    <h3 style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: 'black',
+                                        paddingLeft: '20px'
+                                    }}>Habib Wahid</h3>
+                                    <h5 style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: '#9B9B9B'}}>0000
+                                        fans</h5>
                                 </div>
-                                 <div className="item">
+                                <div className="item">
                                     <img style={{borderRadius: '50%', width: '100%'}} alt="artists" src={artist4}/>
-                                    <h3 style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: 'black', paddingLeft: '20px'}}>Imran</h3>
-                                    <h5 style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: '#9B9B9B'}}>0000 fans</h5>
+                                    <h3 style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: 'black',
+                                        paddingLeft: '20px'
+                                    }}>Imran</h3>
+                                    <h5 style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: '#9B9B9B'}}>0000
+                                        fans</h5>
                                 </div>
                             </OwlCarousel>
                         </div>
-                        <div style={{ margin: '40px 0px 20px 0px'}} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <span className="pull-left" style={{fontWeight: 'normal', color:'black', fontFamily: 'sans-serif', fontSize: '35px'}}>Recently Played</span>
+                        <div style={{margin: '40px 0px 20px 0px'}} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <span className="pull-left" style={{
+                                fontWeight: 'normal',
+                                color: 'black',
+                                fontFamily: 'sans-serif',
+                                fontSize: '35px'
+                            }}>Recently Played</span>
                         </div>
                         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <OwlCarousel
@@ -533,29 +630,74 @@ function App() {
                                 className="owl-theme owl-carousel"
                             >
                                 <div className="item">
-                                    <img style={{borderRadius: '10px', width: '100%'}} alt="recently_played" src={recently_played_1}/>
-                                    <h3 className="pull-left" style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: 'black', marginBottom: '0px'}}>Cats and music</h3>
-                                    <h5 className="pull-left" style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: '#9B9B9B'}}>Artist name goes here</h5>
+                                    <img style={{borderRadius: '10px', width: '100%'}} alt="recently_played"
+                                         src={recently_played_1}/>
+                                    <h3 className="pull-left" style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: 'black',
+                                        marginBottom: '0px'
+                                    }}>Cats and music</h3>
+                                    <h5 className="pull-left" style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: '#9B9B9B'
+                                    }}>Artist name goes here</h5>
                                 </div>
                                 <div className="item">
-                                    <img style={{borderRadius: '10px', width: '100%'}} alt="recently_played" src={recently_played_2}/>
-                                    <h3 className="pull-left" style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: 'black', marginBottom: '0px'}}>Music Name</h3>
-                                    <h5 className="pull-left" style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: '#9B9B9B'}}>Artist name goes here</h5>
+                                    <img style={{borderRadius: '10px', width: '100%'}} alt="recently_played"
+                                         src={recently_played_2}/>
+                                    <h3 className="pull-left" style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: 'black',
+                                        marginBottom: '0px'
+                                    }}>Music Name</h3>
+                                    <h5 className="pull-left" style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: '#9B9B9B'
+                                    }}>Artist name goes here</h5>
                                 </div>
                                 <div className="item">
-                                    <img style={{borderRadius: '10px', width: '100%'}} alt="recently_played" src={recently_played_3}/>
-                                    <h3 className="pull-left" style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: 'black', marginBottom: '0px'}}>Music Name</h3>
-                                    <h5 className="pull-left" style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: '#9B9B9B'}}>Artist name goes here</h5>
+                                    <img style={{borderRadius: '10px', width: '100%'}} alt="recently_played"
+                                         src={recently_played_3}/>
+                                    <h3 className="pull-left" style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: 'black',
+                                        marginBottom: '0px'
+                                    }}>Music Name</h3>
+                                    <h5 className="pull-left" style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: '#9B9B9B'
+                                    }}>Artist name goes here</h5>
                                 </div>
-                                 <div className="item">
-                                    <img style={{borderRadius: '10px', width: '100%'}} alt="recently_played" src={recently_played_4}/>
-                                    <h3 className="pull-left" style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: 'black', marginBottom: '0px'}}>Music Name</h3>
-                                    <h5 className="pull-left" style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: '#9B9B9B'}}>Artist name goes here</h5>
+                                <div className="item">
+                                    <img style={{borderRadius: '10px', width: '100%'}} alt="recently_played"
+                                         src={recently_played_4}/>
+                                    <h3 className="pull-left" style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: 'black',
+                                        marginBottom: '0px'
+                                    }}>Music Name</h3>
+                                    <h5 className="pull-left" style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: '#9B9B9B'
+                                    }}>Artist name goes here</h5>
                                 </div>
                             </OwlCarousel>
                         </div>
-                        <div style={{ margin: '40px 0px 20px 0px'}} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <span className="pull-left" style={{fontWeight: 'normal', color:'black', fontFamily: 'sans-serif', fontSize: '35px'}}>Featured Playlist</span>
+                        <div style={{margin: '40px 0px 20px 0px'}} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <span className="pull-left" style={{
+                                fontWeight: 'normal',
+                                color: 'black',
+                                fontFamily: 'sans-serif',
+                                fontSize: '35px'
+                            }}>Featured Playlist</span>
                         </div>
                         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <OwlCarousel
@@ -583,21 +725,30 @@ function App() {
                                 className="owl-theme owl-carousel"
                             >
                                 <div className="item">
-                                    <img style={{borderRadius: '10px', width: '100%'}} alt="featured_playlist" src={f_playlist1}/>
+                                    <img style={{borderRadius: '10px', width: '100%'}} alt="featured_playlist"
+                                         src={f_playlist1}/>
                                 </div>
                                 <div className="item">
-                                    <img style={{borderRadius: '10px', width: '100%'}} alt="featured_playlist" src={f_playlist2}/>
+                                    <img style={{borderRadius: '10px', width: '100%'}} alt="featured_playlist"
+                                         src={f_playlist2}/>
                                 </div>
                                 <div className="item">
-                                    <img style={{borderRadius: '10px', width: '100%'}} alt="featured_playlist" src={f_playlist3}/>
+                                    <img style={{borderRadius: '10px', width: '100%'}} alt="featured_playlist"
+                                         src={f_playlist3}/>
                                 </div>
-                                 <div className="item">
-                                    <img style={{borderRadius: '10px', width: '100%'}} alt="featured_playlist" src={f_playlist4}/>
+                                <div className="item">
+                                    <img style={{borderRadius: '10px', width: '100%'}} alt="featured_playlist"
+                                         src={f_playlist4}/>
                                 </div>
                             </OwlCarousel>
                         </div>
-                        <div style={{ margin: '40px 0px 20px 0px'}} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <span className="pull-left" style={{fontWeight: 'normal', color:'black', fontFamily: 'sans-serif', fontSize: '35px'}}>Popular Playlist</span>
+                        <div style={{margin: '40px 0px 20px 0px'}} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <span className="pull-left" style={{
+                                fontWeight: 'normal',
+                                color: 'black',
+                                fontFamily: 'sans-serif',
+                                fontSize: '35px'
+                            }}>Popular Playlist</span>
                         </div>
                         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <OwlCarousel
@@ -625,21 +776,30 @@ function App() {
                                 className="owl-theme owl-carousel"
                             >
                                 <div className="item">
-                                    <img style={{borderRadius: '10px', width: '100%'}} alt="popular_playlist" src={p_playlist1}/>
+                                    <img style={{borderRadius: '10px', width: '100%'}} alt="popular_playlist"
+                                         src={p_playlist1}/>
                                 </div>
                                 <div className="item">
-                                    <img style={{borderRadius: '10px', width: '100%'}} alt="popular_playlist" src={p_playlist2}/>
+                                    <img style={{borderRadius: '10px', width: '100%'}} alt="popular_playlist"
+                                         src={p_playlist2}/>
                                 </div>
                                 <div className="item">
-                                    <img style={{borderRadius: '10px', width: '100%'}} alt="popular_playlist" src={p_playlist3}/>
+                                    <img style={{borderRadius: '10px', width: '100%'}} alt="popular_playlist"
+                                         src={p_playlist3}/>
                                 </div>
-                                 <div className="item">
-                                    <img style={{borderRadius: '10px', width: '100%'}} alt="popular_playlist" src={p_playlist4}/>
+                                <div className="item">
+                                    <img style={{borderRadius: '10px', width: '100%'}} alt="popular_playlist"
+                                         src={p_playlist4}/>
                                 </div>
                             </OwlCarousel>
                         </div>
-                        <div style={{ margin: '40px 0px 20px 0px'}} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <span className="pull-left" style={{fontWeight: 'normal', color:'black', fontFamily: 'sans-serif', fontSize: '35px'}}>Made for you</span>
+                        <div style={{margin: '40px 0px 20px 0px'}} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <span className="pull-left" style={{
+                                fontWeight: 'normal',
+                                color: 'black',
+                                fontFamily: 'sans-serif',
+                                fontSize: '35px'
+                            }}>Made for you</span>
                         </div>
                         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <OwlCarousel
@@ -666,22 +826,38 @@ function App() {
                                 className="owl-theme owl-carousel"
                             >
                                 <div className="item">
-                                    <img style={{borderRadius: '10px', width: '100%'}} alt="made_for_you_albums" src={mfy1}/>
-                                    <h3 className="pull-left" style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: '#9B9B9B'}}>My Favourites</h3>
+                                    <img style={{borderRadius: '10px', width: '100%'}} alt="made_for_you_albums"
+                                         src={mfy1}/>
+                                    <h3 className="pull-left"
+                                        style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: '#9B9B9B'}}>My
+                                        Favourites</h3>
                                 </div>
                                 <div className="item">
-                                    <img style={{borderRadius: '10px', width: '100%'}} alt="made_for_you_albums" src={mfy2}/>
-                                    <h3 className="pull-left" style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: '#9B9B9B'}}>Mix International Hitz</h3>
+                                    <img style={{borderRadius: '10px', width: '100%'}} alt="made_for_you_albums"
+                                         src={mfy2}/>
+                                    <h3 className="pull-left"
+                                        style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: '#9B9B9B'}}>Mix
+                                        International Hitz</h3>
                                 </div>
                                 <div className="item">
-                                    <img style={{borderRadius: '10px', width: '100%'}} alt="made_for_you_albums" src={mfy3}/>
-                                    <h3 className="pull-left" style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: '#9B9B9B'}}>Summer Vides</h3>
+                                    <img style={{borderRadius: '10px', width: '100%'}} alt="made_for_you_albums"
+                                         src={mfy3}/>
+                                    <h3 className="pull-left" style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: '#9B9B9B'
+                                    }}>Summer Vides</h3>
                                 </div>
 
                             </OwlCarousel>
                         </div>
-                        <div style={{ margin: '40px 0px 20px 0px'}} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <span className="pull-left" style={{fontWeight: 'normal', color:'black', fontFamily: 'sans-serif', fontSize: '35px'}}>Trending Now</span>
+                        <div style={{margin: '40px 0px 20px 0px'}} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <span className="pull-left" style={{
+                                fontWeight: 'normal',
+                                color: 'black',
+                                fontFamily: 'sans-serif',
+                                fontSize: '35px'
+                            }}>Trending Now</span>
                         </div>
                         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <OwlCarousel
@@ -709,29 +885,74 @@ function App() {
                                 className="owl-theme owl-carousel"
                             >
                                 <div className="item">
-                                    <img style={{borderRadius: '10px', width: '100%'}} alt="trending_now" src={trending1}/>
-                                    <h3 className="pull-left" style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: 'black', marginBottom: '0px'}}>Cats and music</h3>
-                                    <h5 className="pull-left" style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: '#9B9B9B'}}>Artist name goes here</h5>
+                                    <img style={{borderRadius: '10px', width: '100%'}} alt="trending_now"
+                                         src={trending1}/>
+                                    <h3 className="pull-left" style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: 'black',
+                                        marginBottom: '0px'
+                                    }}>Cats and music</h3>
+                                    <h5 className="pull-left" style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: '#9B9B9B'
+                                    }}>Artist name goes here</h5>
                                 </div>
                                 <div className="item">
-                                    <img style={{borderRadius: '10px', width: '100%'}} alt="trending_now" src={trending2}/>
-                                    <h3 className="pull-left" style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: 'black', marginBottom: '0px'}}>Music Name</h3>
-                                    <h5 className="pull-left" style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: '#9B9B9B'}}>Artist name goes here</h5>
+                                    <img style={{borderRadius: '10px', width: '100%'}} alt="trending_now"
+                                         src={trending2}/>
+                                    <h3 className="pull-left" style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: 'black',
+                                        marginBottom: '0px'
+                                    }}>Music Name</h3>
+                                    <h5 className="pull-left" style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: '#9B9B9B'
+                                    }}>Artist name goes here</h5>
                                 </div>
                                 <div className="item">
-                                    <img style={{borderRadius: '10px', width: '100%'}} alt="trending_now" src={trending3}/>
-                                    <h3 className="pull-left" style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: 'black', marginBottom: '0px'}}>Music Name</h3>
-                                    <h5 className="pull-left" style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: '#9B9B9B'}}>Artist name goes here</h5>
+                                    <img style={{borderRadius: '10px', width: '100%'}} alt="trending_now"
+                                         src={trending3}/>
+                                    <h3 className="pull-left" style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: 'black',
+                                        marginBottom: '0px'
+                                    }}>Music Name</h3>
+                                    <h5 className="pull-left" style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: '#9B9B9B'
+                                    }}>Artist name goes here</h5>
                                 </div>
-                                 <div className="item">
-                                    <img style={{borderRadius: '10px', width: '100%'}} alt="trending_now" src={trending4}/>
-                                    <h3 className="pull-left" style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: 'black', marginBottom: '0px'}}>Music Name</h3>
-                                    <h5 className="pull-left" style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: '#9B9B9B'}}>Artist name goes here</h5>
+                                <div className="item">
+                                    <img style={{borderRadius: '10px', width: '100%'}} alt="trending_now"
+                                         src={trending4}/>
+                                    <h3 className="pull-left" style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: 'black',
+                                        marginBottom: '0px'
+                                    }}>Music Name</h3>
+                                    <h5 className="pull-left" style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: '#9B9B9B'
+                                    }}>Artist name goes here</h5>
                                 </div>
                             </OwlCarousel>
                         </div>
-                        <div style={{ margin: '40px 0px 20px 0px'}} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <span className="pull-left" style={{fontWeight: 'normal', color:'black', fontFamily: 'sans-serif', fontSize: '35px'}}>Popular Videos</span>
+                        <div style={{margin: '40px 0px 20px 0px'}} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <span className="pull-left" style={{
+                                fontWeight: 'normal',
+                                color: 'black',
+                                fontFamily: 'sans-serif',
+                                fontSize: '35px'
+                            }}>Popular Videos</span>
                         </div>
                         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <OwlCarousel
@@ -759,29 +980,74 @@ function App() {
                                 className="owl-theme owl-carousel"
                             >
                                 <div className="item">
-                                    <img style={{borderRadius: '10px', width: '100%'}} alt="popular_videos" src={pvideo1}/>
-                                    <h3 className="pull-left" style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: 'black', marginBottom: '0px'}}>Music Video Name</h3>
-                                    <h5 className="pull-left" style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: '#9B9B9B'}}>Artist name goes here</h5>
+                                    <img style={{borderRadius: '10px', width: '100%'}} alt="popular_videos"
+                                         src={pvideo1}/>
+                                    <h3 className="pull-left" style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: 'black',
+                                        marginBottom: '0px'
+                                    }}>Music Video Name</h3>
+                                    <h5 className="pull-left" style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: '#9B9B9B'
+                                    }}>Artist name goes here</h5>
                                 </div>
                                 <div className="item">
-                                    <img style={{borderRadius: '10px', width: '100%'}} alt="popular_videos" src={pvideo2}/>
-                                    <h3 className="pull-left" style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: 'black', marginBottom: '0px'}}>Music Video Name</h3>
-                                    <h5 className="pull-left" style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: '#9B9B9B'}}>Artist name goes here</h5>
+                                    <img style={{borderRadius: '10px', width: '100%'}} alt="popular_videos"
+                                         src={pvideo2}/>
+                                    <h3 className="pull-left" style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: 'black',
+                                        marginBottom: '0px'
+                                    }}>Music Video Name</h3>
+                                    <h5 className="pull-left" style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: '#9B9B9B'
+                                    }}>Artist name goes here</h5>
                                 </div>
                                 <div className="item">
-                                    <img style={{borderRadius: '10px', width: '100%'}} alt="popular_videos" src={pvideo3}/>
-                                    <h3 className="pull-left" style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: 'black', marginBottom: '0px'}}>Music Video Name</h3>
-                                    <h5 className="pull-left" style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: '#9B9B9B'}}>Artist name goes here</h5>
+                                    <img style={{borderRadius: '10px', width: '100%'}} alt="popular_videos"
+                                         src={pvideo3}/>
+                                    <h3 className="pull-left" style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: 'black',
+                                        marginBottom: '0px'
+                                    }}>Music Video Name</h3>
+                                    <h5 className="pull-left" style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: '#9B9B9B'
+                                    }}>Artist name goes here</h5>
                                 </div>
-                                 <div className="item">
-                                    <img style={{borderRadius: '10px', width: '100%'}} alt="popular_videos" src={pvideo4}/>
-                                    <h3 className="pull-left" style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: 'black', marginBottom: '0px'}}>Music Video Name</h3>
-                                    <h5 className="pull-left" style={{fontWeight: 'normal', fontFamily: 'sans-serif', color: '#9B9B9B'}}>Artist name goes here</h5>
+                                <div className="item">
+                                    <img style={{borderRadius: '10px', width: '100%'}} alt="popular_videos"
+                                         src={pvideo4}/>
+                                    <h3 className="pull-left" style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: 'black',
+                                        marginBottom: '0px'
+                                    }}>Music Video Name</h3>
+                                    <h5 className="pull-left" style={{
+                                        fontWeight: 'normal',
+                                        fontFamily: 'sans-serif',
+                                        color: '#9B9B9B'
+                                    }}>Artist name goes here</h5>
                                 </div>
                             </OwlCarousel>
                         </div>
-                        <div style={{ margin: '40px 0px 20px 0px'}} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <span className="pull-left" style={{fontWeight: 'normal', color:'black', fontFamily: 'sans-serif', fontSize: '35px'}}>Radio</span>
+                        <div style={{margin: '40px 0px 20px 0px'}} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <span className="pull-left" style={{
+                                fontWeight: 'normal',
+                                color: 'black',
+                                fontFamily: 'sans-serif',
+                                fontSize: '35px'
+                            }}>Radio</span>
                         </div>
                         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <OwlCarousel
@@ -817,15 +1083,20 @@ function App() {
                                 <div className="item">
                                     <img style={{borderRadius: '50%', width: '100%'}} alt="radio" src={radio3}/>
                                 </div>
-                                 <div className="item">
+                                <div className="item">
                                     <img style={{borderRadius: '50%', width: '100%'}} alt="radio" src={radio4}/>
                                 </div>
                             </OwlCarousel>
                         </div>
-                        <div style={{ margin: '40px 0px 20px 0px'}} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <span className="pull-left" style={{fontWeight: 'normal', color:'black', fontFamily: 'sans-serif', fontSize: '35px'}}>Trending Videos</span>
+                        <div style={{margin: '40px 0px 20px 0px'}} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <span className="pull-left" style={{
+                                fontWeight: 'normal',
+                                color: 'black',
+                                fontFamily: 'sans-serif',
+                                fontSize: '35px'
+                            }}>Trending Videos</span>
                         </div>
-                        <div style={{ margin: '0px 0px 50px 0px'}} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div style={{margin: '0px 0px 50px 0px'}} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <OwlCarousel
                                 margin={30}
                                 autoplay={false}
@@ -836,26 +1107,29 @@ function App() {
                                 nav={false}
                                 responsiveClass={true}
                                 responsive={{
-                                    0:{
-                                        items:1,
+                                    0: {
+                                        items: 1,
                                     },
-                                    600:{
-                                        items:2,
+                                    600: {
+                                        items: 2,
                                     },
-                                    1000:{
-                                        items:2,
+                                    1000: {
+                                        items: 2,
                                     }
                                 }}
                                 className="owl-theme owl-carousel"
                             >
                                 <div className="item">
-                                    <img style={{borderRadius: '10px', width: '100%'}} alt="trending_videos" src={trendvid1}/>
+                                    <img style={{borderRadius: '10px', width: '100%'}} alt="trending_videos"
+                                         src={trendvid1}/>
                                 </div>
                                 <div className="item">
-                                    <img style={{borderRadius: '10px', width: '100%'}} alt="trending_videos" src={trendvid2}/>
+                                    <img style={{borderRadius: '10px', width: '100%'}} alt="trending_videos"
+                                         src={trendvid2}/>
                                 </div>
                                 <div className="item">
-                                    <img style={{borderRadius: '10px', width: '100%'}} alt="trending_videos" src={trendvid3}/>
+                                    <img style={{borderRadius: '10px', width: '100%'}} alt="trending_videos"
+                                         src={trendvid3}/>
                                 </div>
 
                             </OwlCarousel>
@@ -864,41 +1138,125 @@ function App() {
                     <div className="row" style={{padding: '0px 12px 0px 16px', margin: '0px'}}>
                         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12" style={{backgroundColor: 'white'}}>
                             <div className="row" style={{padding: '0px 12px 0px 16px', margin: '0px'}}>
-                                <div style={{ padding: '8px 0px 0px 0px'}} className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                                    <img className="row img-responsive" alt="logo_footer" style={{ width: '150px', paddingTop: '25px', paddingLeft: '18px'}} src={logo_footer}/>
-                                    <div className="row" style={{padding: '14px 0px 0px 0px', margin: '0px'}}><Instagram style={{width: '15px', color: 'black', margin: '0px 5px'}} className="pull-left"/><span className="pull-left" style={{margin: '1px 0px 0px 10px'}}>Instagram</span></div><br/>
-                                    <div className="row" style={{padding: '0px', margin: '0px'}}><Facebook className="pull-left" style={{width: '15px', color: 'black', marginLeft: '5px'}}/><span className="pull-left" style={{margin: '1px 0px 0px 15px'}}>Facebook</span></div><br/>
-                                    <div className="row" style={{padding: '0px', margin: '0px'}}><Twitter className="pull-left" style={{width: '15px', color: 'black', marginLeft: '5px'}}/><span className="pull-left" style={{margin: '1px 0px 0px 15px'}}>Twitter</span></div>
+                                <div style={{padding: '8px 0px 0px 0px'}}
+                                     className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                    <img className="row img-responsive" alt="logo_footer"
+                                         style={{width: '150px', paddingTop: '25px', paddingLeft: '18px'}}
+                                         src={logo_footer}/>
+                                    <div className="row" style={{padding: '14px 0px 0px 0px', margin: '0px'}}><Instagram
+                                        style={{width: '15px', color: 'black', margin: '0px 5px'}}
+                                        className="pull-left"/><span className="pull-left"
+                                                                     style={{margin: '1px 0px 0px 10px'}}>Instagram</span>
+                                    </div>
+                                    <br/>
+                                    <div className="row" style={{padding: '0px', margin: '0px'}}><Facebook
+                                        className="pull-left"
+                                        style={{width: '15px', color: 'black', marginLeft: '5px'}}/><span
+                                        className="pull-left" style={{margin: '1px 0px 0px 15px'}}>Facebook</span></div>
+                                    <br/>
+                                    <div className="row" style={{padding: '0px', margin: '0px'}}><Twitter
+                                        className="pull-left"
+                                        style={{width: '15px', color: 'black', marginLeft: '5px'}}/><span
+                                        className="pull-left" style={{margin: '1px 0px 0px 15px'}}>Twitter</span></div>
                                 </div>
-                                <div style={{ padding: '18px 0px 10px 0px'}} className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                    <h3 className="row" style={{color: '#676767', fontWeight: 'normal'}}>Who we are ?</h3>
-                                    <h5 className="row" style={{color: '#7F7F7F', fontWeight: 'normal',  padding: '10px 0px 0px 0px', margin: '0px'}}>About us</h5><br/>
-                                    <h5 className="row" style={{color: '#7F7F7F', fontWeight: 'normal',  padding: '10px 0px 0px 0px', margin: '0px'}}>Contact us</h5><br/>
-                                    <h5 className="row" style={{color: '#7F7F7F', fontWeight: 'normal',  padding: '10px 0px 0px 0px', margin: '0px'}}>News</h5>
+                                <div style={{padding: '18px 0px 10px 0px'}}
+                                     className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                    <h3 className="row" style={{color: '#676767', fontWeight: 'normal'}}>Who we are
+                                        ?</h3>
+                                    <h5 className="row" style={{
+                                        color: '#7F7F7F',
+                                        fontWeight: 'normal',
+                                        padding: '10px 0px 0px 0px',
+                                        margin: '0px'
+                                    }}>About us</h5><br/>
+                                    <h5 className="row" style={{
+                                        color: '#7F7F7F',
+                                        fontWeight: 'normal',
+                                        padding: '10px 0px 0px 0px',
+                                        margin: '0px'
+                                    }}>Contact us</h5><br/>
+                                    <h5 className="row" style={{
+                                        color: '#7F7F7F',
+                                        fontWeight: 'normal',
+                                        padding: '10px 0px 0px 0px',
+                                        margin: '0px'
+                                    }}>News</h5>
                                 </div>
-                                <div style={{ padding: '18px 0px 10px 0px'}} className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                <div style={{padding: '18px 0px 10px 0px'}}
+                                     className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                                     <h3 className="row" style={{color: '#676767', fontWeight: 'normal'}}>Explore</h3>
-                                    <h5 className="row" style={{color: '#7F7F7F', fontWeight: 'normal',  padding: '10px 0px 0px 0px', margin: '0px'}}>Home</h5><br/>
-                                    <h5 className="row" style={{color: '#7F7F7F', fontWeight: 'normal',  padding: '10px 0px 0px 0px', margin: '0px'}}>Podcast</h5><br/>
-                                    <h5 className="row" style={{color: '#7F7F7F', fontWeight: 'normal',  padding: '10px 0px 0px 0px', margin: '0px'}}>Video</h5>
+                                    <h5 className="row" style={{
+                                        color: '#7F7F7F',
+                                        fontWeight: 'normal',
+                                        padding: '10px 0px 0px 0px',
+                                        margin: '0px'
+                                    }}>Home</h5><br/>
+                                    <h5 className="row" style={{
+                                        color: '#7F7F7F',
+                                        fontWeight: 'normal',
+                                        padding: '10px 0px 0px 0px',
+                                        margin: '0px'
+                                    }}>Podcast</h5><br/>
+                                    <h5 className="row" style={{
+                                        color: '#7F7F7F',
+                                        fontWeight: 'normal',
+                                        padding: '10px 0px 0px 0px',
+                                        margin: '0px'
+                                    }}>Video</h5>
                                 </div>
-                                <div style={{ padding: '18px 0px 10px 0px'}} className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                <div style={{padding: '18px 0px 10px 0px'}}
+                                     className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                                     <h3 className="row" style={{color: '#676767', fontWeight: 'normal'}}>Legal</h3>
-                                    <h5 className="row" style={{color: '#7F7F7F', fontWeight: 'normal',  padding: '10px 0px 0px 0px', margin: '0px'}}>Help & Support</h5><br/>
-                                    <h5 className="row" style={{color: '#7F7F7F', fontWeight: 'normal',  padding: '10px 0px 0px 0px', margin: '0px'}}>Terms of services</h5><br/>
-                                    <h5 className="row" style={{color: '#7F7F7F', fontWeight: 'normal',  padding: '10px 0px 0px 0px', margin: '0px'}}>FAQ</h5>
+                                    <h5 className="row" style={{
+                                        color: '#7F7F7F',
+                                        fontWeight: 'normal',
+                                        padding: '10px 0px 0px 0px',
+                                        margin: '0px'
+                                    }}>Help & Support</h5><br/>
+                                    <h5 className="row" style={{
+                                        color: '#7F7F7F',
+                                        fontWeight: 'normal',
+                                        padding: '10px 0px 0px 0px',
+                                        margin: '0px'
+                                    }}>Terms of services</h5><br/>
+                                    <h5 className="row" style={{
+                                        color: '#7F7F7F',
+                                        fontWeight: 'normal',
+                                        padding: '10px 0px 0px 0px',
+                                        margin: '0px'
+                                    }}>FAQ</h5>
                                 </div>
-                                <div style={{ padding: '18px 0px 10px 0px'}} className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                <div style={{padding: '18px 0px 10px 0px'}}
+                                     className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                                     <h3 className="row" style={{color: '#676767', fontWeight: 'normal'}}>Products</h3>
-                                    <h5 className="row" style={{color: '#7F7F7F', fontWeight: 'normal',  padding: '10px 0px 0px 0px', margin: '0px'}}>Android</h5><br/>
-                                    <h5 className="row" style={{color: '#7F7F7F', fontWeight: 'normal',  padding: '10px 0px 0px 0px', margin: '0px'}}>iOS</h5><br/>
-                                    <h5 className="row" style={{color: '#7F7F7F', fontWeight: 'normal',  padding: '10px 0px 0px 0px', margin: '0px'}}>Web Player</h5>
+                                    <h5 className="row" style={{
+                                        color: '#7F7F7F',
+                                        fontWeight: 'normal',
+                                        padding: '10px 0px 0px 0px',
+                                        margin: '0px'
+                                    }}>Android</h5><br/>
+                                    <h5 className="row" style={{
+                                        color: '#7F7F7F',
+                                        fontWeight: 'normal',
+                                        padding: '10px 0px 0px 0px',
+                                        margin: '0px'
+                                    }}>iOS</h5><br/>
+                                    <h5 className="row" style={{
+                                        color: '#7F7F7F',
+                                        fontWeight: 'normal',
+                                        padding: '10px 0px 0px 0px',
+                                        margin: '0px'
+                                    }}>Web Player</h5>
                                 </div>
                             </div>
                         </div>
                         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12" style={{backgroundColor: 'white'}}>
                             <br/><br/><br/><br/>
-                            <h5 style={{fontWeight: 'normal', color: '#9b9b9b', margin: '20px 20px 20px 0px'}}>&copy; 2020 Shadhin. All rights
+                            <h5 style={{
+                                fontWeight: 'normal',
+                                color: '#9b9b9b',
+                                margin: '20px 20px 20px 0px'
+                            }}>&copy; 2020 Shadhin. All rights
                                 reserved</h5>
                             <br/><br/>
                         </div>
@@ -906,96 +1264,6 @@ function App() {
 
                 </div>
             </div>
-            {/*<div className="row" style={{padding: '0px', margin: '0px 0px 0px 0px', borderTop: '1px solid #d3d3d3'}}>*/}
-            {/*    <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">*/}
-            {/*        <div className="row pull-left" style={{margin: '10px 0px 0px 0px', padding: '0px 0px 0px 30px'}}>*/}
-            {/*            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12"*/}
-            {/*                 style={{margin: '10px 0px 15px 0px', padding: '0px'}}>*/}
-            {/*                <FontAwesomeIcon style={{margin: '0px 30px 10px 0px', cursor: 'pointer'}} color="#9B9B9B"*/}
-            {/*                                 size="1x" icon={faStepBackward}/>*/}
-            {/*                {playing ? <FontAwesomeIcon onClick={toggleAudio}*/}
-            {/*                                            style={{margin: '0px 0px 0px 0px', cursor: 'pointer'}}*/}
-            {/*                                            color="#00A1FF" size="3x" icon={faPauseCircle}/> :*/}
-            {/*                    <FontAwesomeIcon onClick={toggleAudio}*/}
-            {/*                                     style={{margin: '0px 0px 0px 0px', cursor: 'pointer'}} color="#00A1FF"*/}
-            {/*                                     size="3x" icon={faPlayCircle}/>}*/}
-            {/*                <FontAwesomeIcon style={{margin: '0px 0px 10px 30px', cursor: 'pointer'}} color="#9B9B9B"*/}
-            {/*                                 size="1x" icon={faStepForward}/>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*    <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">*/}
-            {/*        <div className="row" style={{margin: '10px 0px 0px 0px', padding: '0px'}}>*/}
-            {/*            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">*/}
-            {/*                <audio*/}
-            {/*                    onTimeUpdate={(e) => setCurrentTime(e.target.currentTime)}*/}
-            {/*                    onCanPlay={(e) => setDur(e.target.duration)}*/}
-            {/*                    onEnded={handleEnd}*/}
-            {/*                    ref={audio}*/}
-            {/*                    preload='true'*/}
-            {/*                    src={currSong}/>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*        <div style={{margin: '20px 0px 0px 0px', padding: '0px'}} className="progress_bar_container row">*/}
-            {/*            <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2 current_time">*/}
-            {/*                <span className="current_time pull-right">{fmtMSS(currentTime)}</span>*/}
-            {/*            </div>*/}
-            {/*            <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8 song_player">*/}
-            {/*                <input*/}
-            {/*                    onDurationChange={e => changeColorBar(e)}*/}
-            {/*                    style={{marginTop: '8px', cursor: 'pointer'}}*/}
-            {/*                    className="slider"*/}
-            {/*                    onChange={handleProgress}*/}
-            {/*                    value={dur ? (currentTime * 100) / dur : 0}*/}
-            {/*                    type="range" name="progressBar" id="progressBar"/>*/}
-            {/*            </div>*/}
-            {/*            <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">*/}
-            {/*                <span className="total_time pull-left">{fmtMSS(dur)}</span>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*    <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">*/}
-            {/*        <div className="row pull-right" style={{margin: '0px 0px 0px 0px', padding: '15px 0px 0px 0px'}}>*/}
-            {/*            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12"*/}
-            {/*                 style={{margin: '15px 0px 15px 0px', padding: '0px'}}>*/}
-            {/*                <FontAwesomeIcon style={{margin: '0px 30px 0px 0px', cursor: 'pointer'}} color="#9B9B9B"*/}
-            {/*                                 size="1x" icon={faRandom}/>*/}
-            {/*                <FontAwesomeIcon style={{margin: '0px 0px 0px 0px', cursor: 'pointer'}} color="#9B9B9B"*/}
-            {/*                                 size="1x" icon={faRetweet}/>*/}
-            {/*                <input ref={volumeBar} className="volumeSlider" orient="vertical" style={{*/}
-            {/*                    display: showVolumeBar ? 'block' : 'none',*/}
-            {/*                    position: 'absolute',*/}
-            {/*                    bottom: '20px',*/}
-            {/*                    right: '7px'*/}
-            {/*                }} value={Math.round(volume * 100)} type="range" name="volumeBar" id="volumeBar"*/}
-            {/*                       onChange={(e) => handleVolume(e.target.value / 100)}/>*/}
-            {/*                <FontAwesomeIcon onClick={() => setShowVolumeBar(true)} style={{*/}
-            {/*                    margin: '0px 0px 0px 30px',*/}
-            {/*                    cursor: 'pointer',*/}
-            {/*                    position: 'relative'*/}
-            {/*                }} color="#9B9B9B" size="1x" icon={faVolumeUp}/>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*    <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">*/}
-            {/*        <div className="row" style={{margin: '0px 0px 0px 0px', padding: '15px 0px 10px 0px'}}>*/}
-            {/*            <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8"*/}
-            {/*                 style={{margin: '2px 0px 15px 0px', padding: '0px 0px 0px 50px'}}>*/}
-            {/*                <img alt="queue_artist_image" src={queue_artist} width="40vw"*/}
-            {/*                     style={{borderRadius: '8px'}}/>*/}
-            {/*            </div>*/}
-            {/*            <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4"*/}
-            {/*                 style={{margin: '10px 0px 0px 0px', padding: '0px 5px 0px 0px'}}>*/}
-            {/*                <span className="pull-left" style={{*/}
-            {/*                    fontSize: '15px',*/}
-            {/*                    fontFamily: 'sans-serif',*/}
-            {/*                    fontWeight: 'bold',*/}
-            {/*                    color: '#9B9B9B'*/}
-            {/*                }}>Queue</span>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
         </div>
     );
 }
