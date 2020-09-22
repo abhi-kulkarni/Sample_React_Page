@@ -90,53 +90,7 @@ function App() {
     const [searchData, setSearchData] = useState(0);
     const [data, setData] = useState(0);
     const [isClicked, setIsClicked] = useState({'home': true, 'music': false, 'podcast': false, 'video': false});
-    const [options, setOptions] = useState({
-        margin: 30,
-        autoplay: false,
-        dots: false,
-        autoplayTimeout: 2000,
-        autoplayHoverPause: true,
-        loop: true,
-        items: 3,
-        nav: true,
-        responsiveClass: true,
-        responsive: {
-            0: {
-                margin: 10,
-            },
-            600: {
-                margin: 30,
-            },
-            1000: {
-                margin: 30,
-            }
-        }
-    });
-    const [options2, setOptions2] = useState({
-        margin: 30,
-        autoplay: false,
-        dots: false,
-        autoplayTimeout: 2000,
-        autoplayHoverPause: true,
-        loop: true,
-        nav: true,
-        items: 4,
-        responsiveClass: true,
-        responsive: {
-            0: {
-                items: 3,
-                margin: 10,
-            },
-            600: {
-                items: 3,
-            },
-            1000: {
-                items: 4,
-            }
-        }
-    });
-
-    const fmtMSS = (s) => {
+    const timeFormatter = (s) => {
         return (s - (s %= 60)) / 60 + (10 <= s ? ':' : ':0') + ~~(s)
     };
     const [currSong, setCurrSong] = useState("https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/wwy.mp3");
@@ -225,7 +179,7 @@ function App() {
 
 
     const getData = () => {
-        axios.get('http://43.240.103.34/api.shadhin/api/search?keyword=valo').then(res => {
+        axios.get('https://43.240.103.34/api.shadhin/api/search?keyword=valo').then(res => {
             let album = res.data.data.Album.data;
             let artist = res.data.data.Artist.data;
             let track = res.data.data.Track.data;
@@ -1110,7 +1064,7 @@ function App() {
                             <OwlCarousel
                                 margin={30}
                                 autoplay={false}
-                                dots={false}
+                                dots={true}
                                 autoplayTimeout={2000}
                                 autoplayHoverPause={true}
                                 loop={true}
