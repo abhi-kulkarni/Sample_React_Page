@@ -1752,7 +1752,7 @@ function App() {
             temp['image'] = item.image.replace("<$size$>", "300");
             temp['title'] = item.title;
             temp['content_id'] = item.ContentID;
-            temp['unique_name'] = item.Artist + item.title;
+            temp['unique_name'] = item.Artist + ' - ' + item.title;
             return temp
         });
         let unique_data = required_data.filter((item, index, self) =>
@@ -1762,6 +1762,11 @@ function App() {
         );
         setData(unique_data);
         setSearchData(unique_data);
+    };
+
+    const selectSuggestion = (suggestion) => {
+        let suggestion_data = suggestion.artist + ' - ' + suggestion.title;
+        setSearchInput(suggestion_data);
     };
 
     const getData = () => {
@@ -1781,7 +1786,7 @@ function App() {
                 temp['image'] = item.image.replace("<$size$>", "300");
                 temp['title'] = item.title;
                 temp['content_id'] = item.ContentID;
-                temp['unique_name'] = item.Artist + item.title;
+                temp['unique_name'] = item.Artist + ' - ' + item.title;
                 return temp
             });
             let unique_data = required_data.filter((item, index, self) =>
@@ -1812,7 +1817,9 @@ function App() {
         setSearchInput(search_data);
         if (search_data && searchData.length > 0) {
             const searchedData = searchData.filter(item => {
-                if (item.title.toLowerCase().includes(search_data.toLowerCase()) || item.artist.toLowerCase().includes(search_data.toLowerCase())) {
+                console.log(search_data);
+                console.log(item.unique_name);
+                if (item.unique_name.toLowerCase().includes(search_data.toLowerCase())) {
                     return item
                 }
             });
@@ -1984,7 +1991,7 @@ function App() {
                                 {data && data.length > 0 && searchInput.length > 0 ?
                                     data.map((item, index) => {
                                         return (<div key={index} style={{padding: '10px 0px', cursor: 'pointer'}}
-                                                     className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                    onClick={() => selectSuggestion(item)} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                             <div style={{margin: '0px', padding: '0px'}} className="row">
                                                 <div style={{padding: '5px 0px 0px 10px', margin: '0px'}}
                                                      className="col-xs-1 col-sm-1 col-md-1 col-lg-1">
