@@ -2039,7 +2039,7 @@ function App() {
                                 fontSize: '35px'
                             }}>Top Picks</span>
                         </div>
-                        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div style={{ 'cursor': 'pointer' }} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <OwlCarousel
                                 margin={30}
                                 autoplay={false}
@@ -2082,7 +2082,7 @@ function App() {
                                 fontSize: '35px'
                             }}>Artists</span>
                         </div>
-                        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div style={{ 'cursor': 'pointer' }} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <OwlCarousel
                                 margin={30}
                                 autoplay={false}
@@ -2161,7 +2161,7 @@ function App() {
                                 fontSize: '35px'
                             }}>Recently Played</span>
                         </div>
-                        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div style={{ 'cursor': 'pointer' }} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <OwlCarousel
                                 margin={30}
                                 autoplay={false}
@@ -2256,7 +2256,7 @@ function App() {
                                 fontSize: '35px'
                             }}>Featured Playlist</span>
                         </div>
-                        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div style={{ 'cursor': 'pointer' }} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <OwlCarousel
                                 margin={30}
                                 autoplay={false}
@@ -2307,7 +2307,7 @@ function App() {
                                 fontSize: '35px'
                             }}>Popular Playlist</span>
                         </div>
-                        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div style={{ 'cursor': 'pointer' }} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <OwlCarousel
                                 margin={30}
                                 autoplay={false}
@@ -2358,7 +2358,7 @@ function App() {
                                 fontSize: '35px'
                             }}>Made for you</span>
                         </div>
-                        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div style={{ 'cursor': 'pointer' }} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <OwlCarousel
                                 margin={30}
                                 autoplay={false}
@@ -2416,7 +2416,7 @@ function App() {
                                 fontSize: '35px'
                             }}>Trending Now</span>
                         </div>
-                        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div style={{ 'cursor': 'pointer' }} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <OwlCarousel
                                 margin={30}
                                 autoplay={false}
@@ -2511,7 +2511,7 @@ function App() {
                                 fontSize: '35px'
                             }}>Popular Videos</span>
                         </div>
-                        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div style={{ 'cursor': 'pointer' }} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <OwlCarousel
                                 margin={30}
                                 autoplay={false}
@@ -2606,7 +2606,7 @@ function App() {
                                 fontSize: '35px'
                             }}>Radio</span>
                         </div>
-                        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div style={{ 'cursor': 'pointer' }} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <OwlCarousel
                                 margin={30}
                                 autoplay={false}
@@ -2653,7 +2653,7 @@ function App() {
                                 fontSize: '35px'
                             }}>Trending Videos</span>
                         </div>
-                        <div style={{margin: '0px 0px 50px 0px'}} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div style={{margin: '0px 0px 50px 0px', 'cursor': 'pointer'}} className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <OwlCarousel
                                 margin={30}
                                 autoplay={false}
