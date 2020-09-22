@@ -70,22 +70,23 @@ $('#carousel9, #carousel8, #carousel7, #carousel6, #carousel5, #carousel4, #caro
 
 
 
-// $('.drop-opening').hide(); 
+
+// $('.drop-opening').hide();
 // $('.open-drop').click(function(){
-//     $('.drop-opening').slideToggle('slow');     
+//     $('.drop-opening').slideToggle('slow');
 // })('.drop-opening').click(function (event) {
 //     event.stopPropagation();
 // });
 
 
 
-// $('.drop-opening').hide(); 
+// $('.drop-opening').hide();
 // $('.open-drop').click(function(){
 //     event.preventDefault();
 //     $('.drop-opening').slideToggle('slow');
 // });
 
-// $('.drop-opening2').hide(); 
+// $('.drop-opening2').hide();
 // $('.open-drop2').click(function(){
 //     event.preventDefault();
 //     $('.drop-opening2').slideToggle('slow');
