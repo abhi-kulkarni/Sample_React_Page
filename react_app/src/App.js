@@ -1983,7 +1983,7 @@ function App() {
                             }} className="row">
                                 {data && data.length > 0 && searchInput.length > 0 ?
                                     data.map((item, index) => {
-                                        return (<div key={index} style={{padding: '10px 0px'}}
+                                        return (<div key={index} style={{padding: '10px 0px', cursor: 'pointer'}}
                                                      className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                             <div style={{margin: '0px', padding: '0px'}} className="row">
                                                 <div style={{padding: '5px 0px 0px 10px', margin: '0px'}}
