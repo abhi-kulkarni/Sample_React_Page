@@ -1963,7 +1963,7 @@ function App() {
                             <FontAwesomeIcon className="pull-left" style={{margin: '8px 0px 0px 10px'}} color="#9B9B9B"
                                              size="lg" icon={faSearch}/>
                         </div>
-                        <div style={{margin: '0px', padding: '0px'}} className="col-xs-5 col-sm-7 col-md-7 col-lg-7">
+                        <div style={{margin: '0px', padding: '0px'}} className={searchInput.length > 0?'col-xs-5 col-sm-7 col-md-7 col-lg-7': 'col-xs-6 col-sm-8 col-md-8 col-lg-8'}>
                             <input autoFocus
                                    onChange={e => handleSearch(e)}
                                    value={searchInput}
