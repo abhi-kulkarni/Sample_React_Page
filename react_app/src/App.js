@@ -1979,8 +1979,11 @@ function App() {
                                    placeholder="Search artists, songs, videos..."
                                    aria-describedby="search"/>
                             <div style={{
+                                display:searchInput.length > 0?'block':'none',
                                 position: 'absolute',
                                 backgroundColor: 'white',
+                                height:'500px',
+                                overflow:'auto',
                                 width: '100%',
                                 top: '45px',
                                 left: '-25px',
@@ -1996,11 +1999,13 @@ function App() {
                                                     <img className="pull-right img-responsive" alt="album_img"
                                                          src={item.image} style={{borderRadius: '6px', width: '40px'}}/>
                                                 </div>
-                                                <div style={{padding: '0px 0px 0px 20px', margin: '0px'}}
+                                                <div style={{padding: '0px 0px 0px 20px', margin: '0px', whiteSpace: 'nowrap', width: '80%', overflow: 'hidden', textOverflow: 'ellipsis'}}
                                                      className="col-xs-10 col-sm-10 col-md-10 col-lg-10">
                                                     <span className="pull-left" style={{
                                                         fontSize: '18px',
                                                         fontWeight: 'normal',
+                                                        wordWrap:'break-word',
+                                                        textOverflow: 'ellipsis',
                                                         color: searchInput === item.unique_name?'#00A1FF':'black',
                                                         marginTop: '10px'
                                                     }}>{item.artist} - {item.title}</span>
