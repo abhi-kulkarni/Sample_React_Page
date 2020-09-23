@@ -6,6 +6,7 @@ import playStore from '../src/static/img/gp.png'
 import appleStore from '../src/static/img/as.png'
 import profile_img from '../src/static/img/user.jpg'
 import OwlCarousel from 'react-owl-carousel';
+import queue_artist from './static/img/artist1.jpg'
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
@@ -3379,7 +3380,7 @@ function App() {
                     </div>
                     <div style={{margin: '20px 0px 0px 0px', padding: '0px'}} className="progress_bar_container row">
                         <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2 current_time">
-                            <span className="current_time pull-right">{fmtMSS(currentTime)}</span>
+                            <span className="current_time pull-right">{timeFormatter(currentTime)}</span>
                         </div>
                         <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8 song_player">
                             <input
@@ -3391,7 +3392,7 @@ function App() {
                                 type="range" name="progressBar" id="progressBar"/>
                         </div>
                         <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                            <span className="total_time pull-left">{fmtMSS(dur)}</span>
+                            <span className="total_time pull-left">{timeFormatter(dur)}</span>
                         </div>
                     </div>
                 </div>
