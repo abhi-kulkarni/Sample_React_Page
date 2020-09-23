@@ -3103,7 +3103,7 @@ function App() {
                             {!isMobileOnly && !isTablet ?<span><FontAwesomeIcon className="radio_right pull-right" style={{
                                 color: '#878787',
                                 fontSize: '30px', margin: '12px 5px 0px 0px', cursor: 'pointer'
-                            }} icon={faChevronRight}/><FontAwesomeIcon className="radio__left pull-right" style={{
+                            }} icon={faChevronRight}/><FontAwesomeIcon className="radio_left pull-right" style={{
                                 color: '#878787',
                                 fontSize: '30px', margin: '12px 25px 0px 0px', cursor: 'pointer'
                             }} icon={faChevronLeft}/></span>:""}
