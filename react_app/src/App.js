@@ -3343,35 +3343,6 @@ function App() {
                             <br/><br/>
                         </div>
                     </div>
-                    {/*<div className="row" style={{padding: '0px 12px 0px 16px', margin: '0px'}}>*/}
-                    {/*    <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3"*/}
-                    {/*         style={{backgroundColor: 'white', padding: footerImgPadding()}}>*/}
-                    {/*        <img className="img-responsive" alt="logo_footer"*/}
-                    {/*             style={{marginTop: isMobileOnly ? '12px' : '32px', width: footerImgWidth()}}*/}
-                    {/*             src={logo_footer}/>*/}
-                    {/*    </div>*/}
-                    {/*    <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3"*/}
-                    {/*         style={{backgroundColor: 'white', padding: '1% 0% 0% 0%'}}>*/}
-                    {/*        <h3 className="row" style={{color: '#676767', fontWeight: 'normal'}}>Who we are*/}
-                    {/*            ?</h3>*/}
-
-                    {/*    </div>*/}
-                    {/*    <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2"*/}
-                    {/*         style={{backgroundColor: 'white', padding: '1% 0% 0% 0%'}}>*/}
-                    {/*        <h3 className="row" style={{color: '#676767', fontWeight: 'normal'}}>Explore</h3>*/}
-
-                    {/*    </div>*/}
-                    {/*    <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2"*/}
-                    {/*         style={{backgroundColor: 'white', padding: '1% 0% 0% 0%'}}>*/}
-                    {/*        <h3 className="row" style={{color: '#676767', fontWeight: 'normal'}}>Legal</h3>*/}
-
-                    {/*    </div>*/}
-                    {/*    <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2"*/}
-                    {/*         style={{backgroundColor: 'white', padding: '1% 0% 0% 0%'}}>*/}
-                    {/*        <h3 className="row" style={{color: '#676767', fontWeight: 'normal'}}>Products</h3>*/}
-
-                    {/*    </div>*/}
-                    {/*</div>*/}
                 </div>
             </div>
         </div>
