@@ -1993,12 +1993,31 @@ function App() {
     //     }
     // }, [currSong]);
 
+    window.addEventListener("resize", function () {
+        orientation_resize();
+    });
+
     useEffect(() => {
         // getData();
         getDataLocal();
         // document.addEventListener('mousedown', handleClickOutside, false)
     }, []);
 
+    const orientation_resize = () => {
+        if (window.matchMedia("(orientation: portrait)").matches) {
+            // console.log('orientation: portrait');
+            setOrientation('portrait')
+        } else if (window.matchMedia("(orientation: landscape)").matches) {
+            // console.log('orientation: landscape');
+            setOrientation('landscape')
+        }
+
+        // footerImgWidth();
+        // footerSocialPadding();
+        // footerImgMargin();
+        // owlNavFont();
+        // storesPadding();
+    };
 
     const getDataLocal = () => {
         let album = apiData.data.Album.data;
